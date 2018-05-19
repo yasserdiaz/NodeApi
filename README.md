@@ -8,7 +8,7 @@ Api Rest en Node + Express + MongoDb + Auth JWT
 ## Instalación
 `npm install` 
 
-## Uso de la Api
-http://{host}:3000/api-docs
+## Documentación de la Api
+http://localhost:3000/api-docs - automatic!
 
 
