@@ -1,0 +1,588 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "NodeApi",
+    "description": "TODO: Add Description"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "description": "Registrar un nuevo usuario.\n\nCampos necesarios: Nombre, Correo y Cotraseña.\n\n",
+        "summary": "Registrar Usuario",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "AuthRegisterPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/auth/register",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "name=Yasser&email=yasser@gmail.com&password=123456"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Registrar Usuario",
+            "x-testDescription": "Registrar un nuevo usuario.\n\nCampos necesarios: Nombre, Correo y Cotraseña.\n\n"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "Inciar sesión con correo y contraseña, devuelve un token para usar en el resto de la API.",
+        "summary": "Inciar Sesión",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "AuthLoginPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/auth/login",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmYzOWM1ZjNmM2Q4MTllOGZhYWNiNCIsImlhdCI6MTUyNjY3NTkwOSwiZXhwIjoxNTI2NzYyMzA5fQ.GjfDae3UgGJTlS3VfmbTy2ILUiJ4SNpSX-Mt2RZJHEQ"
+              },
+              "body": "email=yasser@gmail.com&password=123456"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Inciar Sesión",
+            "x-testDescription": "Inciar sesión con correo y contraseña, devuelve un token para usar en el resto de la API."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "description": "Devuelve el usuario relacionado al token que se pasa como parámetro.",
+        "summary": "Usuario Activo",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "AuthMeGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/auth/me",
+              "headers": {
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Usuario Activo",
+            "x-testDescription": "Devuelve el usuario relacionado al token que se pasa como parámetro."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "Listar todos los usuarios, se debe pasar el token como parámetro.",
+        "summary": "Listado de Usuarios",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "UsersGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/users",
+              "headers": {
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjczMzg4MCwiZXhwIjoxNTI2ODIwMjgwfQ.m_D0MNfR0eY7HlZr9Y1F8mQCPNLZ88JAUDsQAOj6NJA"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Listado de Usuarios",
+            "x-testDescription": "Listar todos los usuarios, se debe pasar el token como parámetro."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "description": "Crear un nuevo usuario.\n\nSe deben pasar los datos del usuario (nombre, correo y contraseña) y el token de acceso.",
+        "summary": "Crear Usuario",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "UsersPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/users",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+              },
+              "body": "name=Yasser&email=yasser@gmail.com&password=123456"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Crear Usuario",
+            "x-testDescription": "Crear un nuevo usuario.\n\nSe deben pasar los datos del usuario (nombre, correo y contraseña) y el token de acceso."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/5b00540d6261de10f45eccc0": {
+      "get": {
+        "description": "Obtner los datos de un usuario por id, se debe pasar el token como parámetro.",
+        "summary": "Usuario por id",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Users5b00540d6261de10f45eccc0Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/users/5b00540d6261de10f45eccc0",
+              "headers": {
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjczMzg4MCwiZXhwIjoxNTI2ODIwMjgwfQ.m_D0MNfR0eY7HlZr9Y1F8mQCPNLZ88JAUDsQAOj6NJA"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Usuario por id",
+            "x-testDescription": "Obtner los datos de un usuario por id, se debe pasar el token como parámetro."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "put": {
+        "description": "Actualizar usuario por id.\n\nSe deben pasar los datos a modificar y el token de acceso.",
+        "summary": "Actualizar Usuario",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Users5b00540d6261de10f45eccc0Put",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "PUT",
+              "uri": "/users/5b00540d6261de10f45eccc0",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+              },
+              "body": "name=Yasser Diaz&email=yasser@gmail.com&password=123456"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Actualizar Usuario",
+            "x-testDescription": "Actualizar usuario por id.\n\nSe deben pasar los datos a modificar y el token de acceso."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "description": "Borrar usuario por id.\n\nSe debe el token de acceso.",
+        "summary": "Borrar Usuario",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "Users5b00540d6261de10f45eccc0Delete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "DELETE",
+              "uri": "/users/5b00540d6261de10f45eccc0",
+              "headers": {
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Borrar Usuario",
+            "x-testDescription": "Borrar usuario por id.\n\nSe debe el token de acceso."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  }
+}

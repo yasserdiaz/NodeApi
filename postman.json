@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "476fbb14-881b-47b3-89a8-77f21adecb52",
+		"name": "NodeApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registrar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Yasser",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "yasser@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "Registrar un nuevo usuario.\n\nCampos necesarios: Nombre, Correo y Cotraseña.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Inciar Sesión",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmYzOWM1ZjNmM2Q4MTllOGZhYWNiNCIsImlhdCI6MTUyNjY3NTkwOSwiZXhwIjoxNTI2NzYyMzA5fQ.GjfDae3UgGJTlS3VfmbTy2ILUiJ4SNpSX-Mt2RZJHEQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "yasser@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "Inciar sesión con correo y contraseña, devuelve un token para usar en el resto de la API."
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Activo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				},
+				"description": "Devuelve el usuario relacionado al token que se pasa como parámetro."
+			},
+			"response": []
+		},
+		{
+			"name": "Listado de Usuarios",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjczMzg4MCwiZXhwIjoxNTI2ODIwMjgwfQ.m_D0MNfR0eY7HlZr9Y1F8mQCPNLZ88JAUDsQAOj6NJA"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Listar todos los usuarios, se debe pasar el token como parámetro."
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario por id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjczMzg4MCwiZXhwIjoxNTI2ODIwMjgwfQ.m_D0MNfR0eY7HlZr9Y1F8mQCPNLZ88JAUDsQAOj6NJA"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b00540d6261de10f45eccc0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b00540d6261de10f45eccc0"
+					]
+				},
+				"description": "Obtner los datos de un usuario por id, se debe pasar el token como parámetro."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Yasser",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "yasser@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Crear un nuevo usuario.\n\nSe deben pasar los datos del usuario (nombre, correo y contraseña) y el token de acceso."
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Yasser Diaz",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "yasser@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b00540d6261de10f45eccc0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b00540d6261de10f45eccc0"
+					]
+				},
+				"description": "Actualizar usuario por id.\n\nSe deben pasar los datos a modificar y el token de acceso."
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZmY0OWZkZDE2ZTg0MTc0MGI1YjBjMSIsImlhdCI6MTUyNjY4MDA2MSwiZXhwIjoxNTI2NzY2NDYxfQ._lPQidNbVrz0EiU5dao79s6_MhdI6DswTTjHxqd-DQI"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/users/5b00540d6261de10f45eccc0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"5b00540d6261de10f45eccc0"
+					]
+				},
+				"description": "Borrar usuario por id.\n\nSe debe el token de acceso."
+			},
+			"response": []
+		}
+	]
+}
